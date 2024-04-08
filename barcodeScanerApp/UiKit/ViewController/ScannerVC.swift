@@ -15,7 +15,7 @@ protocol ScannerVCDelegate: AnyObject{
 }
 
 final class ScanerVC: UIViewController{
-    let captureSessing = AVCaptureSession()
+    let captureSession = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
     weak var scanerDelegate: ScannerVCDelegate!
     
@@ -59,8 +59,8 @@ final class ScanerVC: UIViewController{
             return
         }
         
-        if captureSessing.canAddInput(videoInput){
-            captureSessing.addInput(videoInput)
+        if captureSession.canAddInput(videoInput){
+            captureSession.addInput(videoInput)
         }else{
             scanerDelegate?.didSurface(error: .InvalidDeviceInput)
             return
@@ -68,8 +68,8 @@ final class ScanerVC: UIViewController{
         
         let metaDataOutput  = AVCaptureMetadataOutput()
         
-        if captureSessing.canAddOutput(metaDataOutput){
-            captureSessing.addOutput(metaDataOutput)
+        if captureSession.canAddOutput(metaDataOutput){
+            captureSession.addOutput(metaDataOutput)
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metaDataOutput.metadataObjectTypes = [.ean8, .ean13]
         }else{
@@ -77,11 +77,11 @@ final class ScanerVC: UIViewController{
             return
         }
         
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSessing)
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer!.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer!)
         
-        captureSessing.startRunning()
+        captureSession.startRunning()
     }
 }
 

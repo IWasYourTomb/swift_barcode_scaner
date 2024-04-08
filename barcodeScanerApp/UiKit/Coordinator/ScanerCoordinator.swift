@@ -21,7 +21,7 @@ struct ScanerCoordinator: UIViewControllerRepresentable {
         Coordinator(scannerView: self)
     }
     
-    final class Coordinator: NSObject,ScannerVCDelegate{
+    final class Coordinator: NSObject, ScannerVCDelegate{
         
         private let scannerView: ScanerCoordinator
         
@@ -42,5 +42,4 @@ struct ScanerCoordinator: UIViewControllerRepresentable {
             }
         }
     }
-    
 }

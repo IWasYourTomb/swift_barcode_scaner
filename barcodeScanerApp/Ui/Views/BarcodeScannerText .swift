@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct BarcodeScannerText_: View {
+struct BarcodeScannerText: View {
+    var text: String
+    var color: Color
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(text)
+            .bold()
+            .font(.largeTitle)
+            .foregroundColor(color)
+            .padding()
     }
-}
-
-#Preview {
-    BarcodeScannerText_()
 }
