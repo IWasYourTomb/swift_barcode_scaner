@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct barcodeScanerAppApp: App {
+struct barcodeScannerAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BarcodeScanerView()
         }
     }
 }
